@@ -27,7 +27,9 @@
       "eslint"
     ]
   },
-  "dependencies": {},
+  "dependencies": {
+    "react-quill": "^1.2.3"
+  },
   "peerDependencies": {
     "antd": "3.x",
     "react": "16.x"
