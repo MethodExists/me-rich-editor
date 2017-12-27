@@ -44,7 +44,7 @@ class RichEditor extends React.Component {
         ref={(el) => { this.quillRef = el; }}
         value={this.props.value}
         onChange={this.handleChange}
-        modules={this.modules}
+        modules={this.props.modules || this.modules}
       />
     );
   }
@@ -58,6 +58,7 @@ RichEditor.propTypes = {
   value: PropTypes.any,
   onChange: PropTypes.func, // eslint-disable-line react/require-default-props
   onImageUpload: PropTypes.func, // eslint-disable-line react/require-default-props
+  modules: ReactQuill.propTypes.modules, // eslint-disable-line react/require-default-props
 };
 
 export default RichEditor;

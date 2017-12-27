@@ -17,6 +17,7 @@ class Demo extends Component {
   state = {
     value1: undefined,
     value2: undefined,
+    value3: undefined,
   }
 
   render() {
@@ -45,6 +46,26 @@ class Demo extends Component {
             />
             Value:
             <pre style={{ whiteSpace: 'pre-wrap' }}>{this.state.value2}</pre>
+          </Card>
+          <Card
+            title="Custom modules"
+            style={{ padding: 30, marginBottom: 32 }}
+          >
+            <RichEditor
+              value={this.state.value3}
+              onChange={value3 => this.setState({ value3 })}
+              modules={{
+                toolbar: {
+                  container: [
+                    [{ header: [1, 2, false] }],
+                    ['bold', 'italic'],
+                    [{ list: 'ordered' }, { list: 'bullet' }],
+                  ],
+                },
+              }}
+            />
+            Value:
+            <pre style={{ whiteSpace: 'pre-wrap' }}>{this.state.value3}</pre>
           </Card>
         </Layout.Content>
       </Layout>
