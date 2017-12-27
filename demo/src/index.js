@@ -14,6 +14,11 @@ const handleImageUpload = (file) => {
 };
 
 class Demo extends Component {
+  state = {
+    value1: undefined,
+    value2: undefined,
+  }
+
   render() {
     return (
       <Layout>
@@ -22,13 +27,24 @@ class Demo extends Component {
         </Layout.Header>
         <Layout.Content style={{ padding: 32 }}>
           <Card style={{ padding: 30, marginBottom: 32 }}>
-            <RichEditor />
+            <RichEditor
+              value={this.state.value1}
+              onChange={value1 => this.setState({ value1 })}
+            />
+            Value:
+            <pre style={{ whiteSpace: 'pre-wrap' }}>{this.state.value1}</pre>
           </Card>
           <Card
             title="Custom image uploader"
             style={{ padding: 30, marginBottom: 32 }}
           >
-            <RichEditor onImageUpload={handleImageUpload} />
+            <RichEditor
+              value={this.state.value2}
+              onChange={value2 => this.setState({ value2 })}
+              onImageUpload={handleImageUpload}
+            />
+            Value:
+            <pre style={{ whiteSpace: 'pre-wrap' }}>{this.state.value2}</pre>
           </Card>
         </Layout.Content>
       </Layout>
