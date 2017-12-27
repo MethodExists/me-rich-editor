@@ -16,7 +16,7 @@ describe('RichEditor', () => {
 
   it('should render', () => {
     render(<RichEditor />, node, () => {
-      expect(node.innerHTML).toContain('RichEditor');
+      expect(node.innerHTML).toContain('quill');
     });
   });
 });
