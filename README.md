@@ -49,6 +49,7 @@ Also the handler is repsonsible for showing a spinner during the upload and hidi
 | `*` onChange  | func(value:string)             |           | Called on any change with new HTML value
 | onImageUpload | func(file:fileObject): Promise | undefined | Custom image uploader handler. Should return a promise which resolves to the uploaded image URL
 | modules       | object                         | undefined | If specified will replace default modules prop for [react-quill](https://github.com/zenoamaro/react-quill#props)
+| debounceDelay | number                         | 700       | Delay in milliseconds before firing `onChange` handler when typing in the editor
 
 > Default modules are defined in [src/index.js](src/index.js#L24-L37)
 

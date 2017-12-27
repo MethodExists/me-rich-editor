@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactQuill from 'react-quill';
@@ -36,29 +37,36 @@ class RichEditor extends React.Component {
     },
   }
 
-  handleChange = value => this.props.onChange && this.props.onChange(value)
+  debouncedHandleChange = _.debounce((value, delta, source) => {
+    if (source === 'user') {
+      this.props.onChange(value, delta, source);
+    }
+  }, this.props.debounceDelay)
 
   render() {
+    const { modules, ...restProps } = this.props;
     return (
       <ReactQuill
         ref={(el) => { this.quillRef = el; }}
-        value={this.props.value}
-        onChange={this.handleChange}
-        modules={this.props.modules || this.modules}
+        modules={modules || this.modules}
+        {...restProps}
+        onChange={this.debouncedHandleChange}
       />
     );
   }
 }
 
 RichEditor.defaultProps = {
+  debounceDelay: 700,
   value: '',
 };
 
 RichEditor.propTypes = {
-  value: PropTypes.any,
-  onChange: PropTypes.func, // eslint-disable-line react/require-default-props
+  value: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
   onImageUpload: PropTypes.func, // eslint-disable-line react/require-default-props
   modules: ReactQuill.propTypes.modules, // eslint-disable-line react/require-default-props
+  debounceDelay: PropTypes.number,
 };
 
 export default RichEditor;
