@@ -1,0 +1,58 @@
+{
+  "name": "me-rich-editor",
+  "version": "0.0.1",
+  "description": "Rich editor component for me-schema-form",
+  "main": "lib/index.js",
+  "files": [
+    "css",
+    "lib",
+    "umd"
+  ],
+  "scripts": {
+    "build": "nwb build-react-component --copy-files --no-demo",
+    "clean": "nwb clean-module && nwb clean-demo",
+    "start": "nwb serve-react-demo",
+    "test": "nwb test-react",
+    "test:coverage": "nwb test-react --coverage",
+    "test:watch": "nwb test-react --server",
+    "lint": "eslint src tests demo/src",
+    "precommit": "lint-staged",
+    "prepublishOnly": "npm run test && npm run build",
+    "prepush": "npm run lint --silent && npm run test",
+    "patch": "npm run prepublishOnly && npm version patch && git push --no-verify && git push --tags --no-verify && npm publish --ignore-scripts",
+    "minor": "npm run prepublishOnly && npm version minor && git push --no-verify && git push --tags --no-verify && npm publish --ignore-scripts"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint"
+    ]
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "antd": "3.x",
+    "react": "16.x"
+  },
+  "devDependencies": {
+    "@methodexists/eslint-config": "0.0.10",
+    "antd": "^3.0.3",
+    "babel-plugin-import": "^1.6.3",
+    "babel-plugin-module-resolver": "^3.0.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.2.3",
+    "nwb": "^0.17.3",
+    "nwb-less": "^0.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MethodExists/me-rich-editor"
+  },
+  "bugs": {
+    "url": "https://github.com/MethodExists/me-rich-editor/issues"
+  },
+  "keywords": [
+    "react-component"
+  ]
+}
