@@ -28,7 +28,7 @@ class RichEditor extends React.Component {
         [{ header: [1, 2, 3, false] }],
         ['bold', 'italic', 'underline', 'blockquote'],
         [{ list: 'ordered' }, { list: 'bullet' }],
-        ['link', 'image'],
+        ['link', 'image', 'video'],
         ['clean'],
       ],
       handlers: {
